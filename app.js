@@ -16,8 +16,9 @@ const STATUS_LABEL = {
   unconfirmed: "Unconfirmed",
 };
 
-// Display order for the topic chips; a category missing here sorts last.
-const TOPIC_LABEL = {
+// Display order for the topic chips; a category missing here sorts last. A feed's
+// own meta.topics (from feeds.toml) replaces this when present.
+let TOPIC_LABEL = {
   releases: "Releases",
   tips: "Techniques",
   setups: "Setups",
@@ -57,14 +58,33 @@ const store = {
 
 // lastSeen survives across visits; the value captured at the start of this
 // browser session decides what counts as new, so reloads don't clear the marks.
-function previousVisit(latest) {
-  let prev = store.get("sessionStorage", "prevSeen");
+// Keys carry the feed name: every Pages site shares the awong-pepperoni.github.io
+// origin, so un-namespaced keys would let one feed's visit clear another's marks.
+function previousVisit(latest, feed) {
+  const seenKey = `lastSeen:${feed}`;
+  const prevKey = `prevSeen:${feed}`;
+  let prev = store.get("sessionStorage", prevKey);
   if (prev === null) {
-    prev = store.get("localStorage", "lastSeen") ?? "";
-    store.set("sessionStorage", "prevSeen", prev);
+    // The AI site predates namespacing; carry its old key over once.
+    prev = store.get("localStorage", seenKey) ??
+      (feed === "ai" ? store.get("localStorage", "lastSeen") : null) ?? "";
+    store.set("sessionStorage", prevKey, prev);
   }
-  if (latest) store.set("localStorage", "lastSeen", latest);
+  if (latest) store.set("localStorage", seenKey, latest);
   return prev || null;
+}
+
+// Per-feed text from feeds.toml. The HTML ships the AI feed's text as a fallback.
+function applyMeta(meta) {
+  if (!meta) return;
+  if (meta.title) {
+    document.title = meta.title;
+    $(".brand").textContent = meta.title;
+  }
+  if (meta.tagline) $(".tagline").textContent = meta.tagline;
+  if (meta.about) $("#about-text").textContent = meta.about;
+  if (meta.durable_label) $("#tab-tips").textContent = meta.durable_label;
+  if (meta.topics && Object.keys(meta.topics).length) TOPIC_LABEL = meta.topics;
 }
 
 /* ------------------------------------------------------------------ build */
@@ -167,10 +187,10 @@ function renderDigest(entries) {
   panels.digest.append(frag);
 }
 
-function renderTips(themes) {
+function renderTips(themes, heading = "Curated tips") {
   const article = el("article", "entry entry-static");
   const head = el("header", "entry-head");
-  head.append(el("h2", "entry-date", "Curated tips"));
+  head.append(el("h2", "entry-date", heading));
   head.append(el("span", "entry-title", "deduplicated, kept current"));
   article.append(head);
 
@@ -368,27 +388,32 @@ function showSince(entries, prev) {
 /* ------------------------------------------------------------------ init */
 
 async function init() {
+  // ?feed=<name> previews another feed locally from data/<name>.json; a published
+  // site carries exactly one feed as digest.json.
+  const param = new URLSearchParams(location.search).get("feed");
+  const source = param && /^[a-z0-9-]+$/.test(param) ? `data/${param}.json` : "digest.json";
   let data;
   try {
-    const res = await fetch("digest.json", { cache: "no-cache" });
+    const res = await fetch(source, { cache: "no-cache" });
     if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
     data = await res.json();
   } catch (err) {
     // The usual cause is opening index.html over file://, where fetch is blocked.
     emptyEl.hidden = false;
     emptyEl.textContent =
-      `Could not load digest.json (${err.message}). Run the parser, then serve this ` +
+      `Could not load ${source} (${err.message}). Run the parser, then serve this ` +
       `folder over http rather than opening the file directly.`;
     return;
   }
 
+  applyMeta(data.meta);
   const entries = data.digests || [];
-  const prev = previousVisit(entries[0]?.date);
+  const prev = previousVisit(entries[0]?.date, data.meta?.feed ?? "ai");
   // First visit: treat the latest run as the new one, measured from the run before it.
   state.cutoff = prev ?? entries[1]?.date ?? null;
 
   renderDigest(entries);
-  renderTips(data.tips || []);
+  renderTips(data.tips || [], data.meta?.durable_heading);
   renderTopics(entries);
   showSince(entries, prev);
   $("#generated").textContent = data.generated ?? "unknown";

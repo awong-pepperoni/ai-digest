@@ -1,5 +1,24 @@
 {
   "generated": "2026-10-07",
+  "meta": {
+    "feed": "ai",
+    "title": "AI Digest",
+    "tagline": "What the AI subreddits said, week by week",
+    "about": "Each digest is a snapshot of what the AI subreddits were discussing when it ran, taken from Reddit's \"hot\" ranking, which has no time window. Everything is what Reddit users claim unless a line says it was checked. Durable findings are promoted into the Tips tab, which is deduplicated and kept current.",
+    "durable_label": "Tips",
+    "durable_heading": "Curated tips",
+    "topics": {
+      "releases": "Releases",
+      "tips": "Techniques",
+      "setups": "Setups",
+      "builds": "Builds",
+      "reading": "Reading",
+      "ideas": "Ideas",
+      "unverified": "Unverified claims",
+      "meta": "Sub triage",
+      "other": "Other"
+    }
+  },
   "digests": [
     {
       "date": "2026-10-07",
