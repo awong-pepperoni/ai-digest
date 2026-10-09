@@ -21,6 +21,97 @@
   },
   "digests": [
     {
+      "date": "2026-10-08",
+      "title": "Off-cycle AI digest: decision models",
+      "intro_html": "<p>An off-cycle entry, added on request, for a story the 4 and 7 October runs missed: a new category of <strong>decision models</strong>. These are small, fast models that return typed answers with probabilities instead of generating text. TypeSafe AI's Jev launched the category in mid-September, and OpenAI followed at DevDay with a Decisions API. The runs missed it for two reasons. The feed read mostly Claude subs, and the strongest threads, on r/LocalLLaMA, rose after the 7 October run. This entry covers only that story; it is not a full run.</p>",
+      "sections": [
+        {
+          "heading": "Releases and changes",
+          "category": "releases",
+          "lead_html": null,
+          "items": [
+            {
+              "headline": "<strong>TypeSafe AI's Jev, the first &quot;System One model&quot;.</strong>",
+              "html": "<p><strong>TypeSafe AI's Jev, the first &quot;System One model&quot;.</strong> It answers typed questions about text or JSON and returns &quot;type-safe structured values&quot; with &quot;calibrated probabilities and confidence scores&quot;, never prose. TypeSafe claims end-to-end responses in &quot;70ms-500ms&quot;. It prices input at $0.042 per million tokens, with output &quot;FREE (too cheap to meter)&quot;. It is in early access, with developers brought off a waitlist. The headline &quot;193.6x faster, 444.6x cheaper&quot; compares Jev with GPT-6 Astra and Fable 5.1 on TypeSafe's own workflow evaluations, and TypeSafe itself calls those figures the &quot;higher end of real world gains&quot;. Press coverage dates the launch to 15 September; the post now carries an 8 October timestamp.</p>",
+              "text": "TypeSafe AI's Jev, the first \"System One model\". It answers typed questions about text or JSON and returns \"type-safe structured values\" with \"calibrated probabilities and confidence scores\", never prose. TypeSafe claims end-to-end responses in \"70ms-500ms\". It prices input at $0.042 per million tokens, with output \"FREE (too cheap to meter)\". It is in early access, with developers brought off a waitlist. The headline \"193.6x faster, 444.6x cheaper\" compares Jev with GPT-6 Astra and Fable 5.1 on TypeSafe's own workflow evaluations, and TypeSafe itself calls those figures the \"higher end of real world gains\". Press coverage dates the launch to 15 September; the post now carries an 8 October timestamp. Verified for the product description, pricing and availability, against TypeSafe's launch post . The speed and cost multiples are the vendor's own benchmark.",
+              "status": "verified",
+              "status_html": "<p><strong>Verified</strong> for the product description, pricing and availability, against <a href=\"https://typesafe.ai/blog/introducing-system-one-models-and-jev\" target=\"_blank\" rel=\"noopener noreferrer\">TypeSafe's launch post</a>. The speed and cost multiples are the vendor's own benchmark.</p>",
+              "updated": null
+            },
+            {
+              "headline": "<strong>OpenAI's Decisions API, announced at DevDay on 29 September and in public beta since 6 October.</strong>",
+              "html": "<p><strong>OpenAI's Decisions API, announced at DevDay on 29 September and in public beta since 6 October.</strong> It &quot;evaluates text, images, or both and returns typed answers about 10x faster than the Responses API&quot;, using <code>gpt-6-luna</code>, currently the only model. Input costs $0.10 per million tokens and output is not charged. OpenAI expects general availability &quot;in the coming weeks&quot;. It takes images, which Jev does not. The one hands-on report in the subs is negative: <a href=\"https://www.reddit.com/r/LLMDevs/comments/1x0cngd/\" target=\"_blank\" rel=\"noopener noreferrer\">an r/LLMDevs evaluation</a> calls it &quot;disappointingly slow&quot; for a category whose point is decisions under 200ms.</p>",
+              "text": "OpenAI's Decisions API, announced at DevDay on 29 September and in public beta since 6 October. It \"evaluates text, images, or both and returns typed answers about 10x faster than the Responses API\", using gpt-6-luna , currently the only model. Input costs $0.10 per million tokens and output is not charged. OpenAI expects general availability \"in the coming weeks\". It takes images, which Jev does not. The one hands-on report in the subs is negative: an r/LLMDevs evaluation calls it \"disappointingly slow\" for a category whose point is decisions under 200ms. Verified against OpenAI's Decisions guide . The latency complaint is Single source.",
+              "status": "verified",
+              "status_html": "<p><strong>Verified</strong> against <a href=\"https://developers.openai.com/api/docs/guides/decisions\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAI's Decisions guide</a>. The latency complaint is Single source.</p>",
+              "updated": null
+            },
+            {
+              "headline": "<strong>Open-weight decision models are already running locally.</strong>",
+              "html": "<p><strong>Open-weight decision models are already running locally.</strong> Threads name Kev-0.8B, Laya typed-decisions and LiquidAI's d1, and say llama.cpp supports them. <a href=\"https://www.reddit.com/r/LLMDevs/comments/1x0qg1x/\" target=\"_blank\" rel=\"noopener noreferrer\">A Pi coding-agent plugin</a> reports its own measurements: hosted Jev at about 270ms and about 1.5 cents per 1,000 checks through OpenRouter, Kev-0.8B on CPU at about 170ms in 1.1GB of RAM, and Laya at about 100ms in about 550MB.</p>",
+              "text": "Open-weight decision models are already running locally. Threads name Kev-0.8B, Laya typed-decisions and LiquidAI's d1, and say llama.cpp supports them. A Pi coding-agent plugin reports its own measurements: hosted Jev at about 270ms and about 1.5 cents per 1,000 checks through OpenRouter, Kev-0.8B on CPU at about 170ms in 1.1GB of RAM, and Laya at about 100ms in about 550MB. Single source · the plugin author's own 50-command test, which they call \"only a rough check\".",
+              "status": "single-source",
+              "status_html": "<p>Single source · the plugin author's own 50-command test, which they call &quot;only a rough check&quot;.</p>",
+              "updated": null
+            }
+          ]
+        },
+        {
+          "heading": "Setups and workflows",
+          "category": "setups",
+          "lead_html": null,
+          "items": [
+            {
+              "headline": "<strong>Use decision models as gates and routers, not as the judge of last resort.</strong>",
+              "html": "<p><strong>Use decision models as gates and routers, not as the judge of last resort.</strong> The Pi plugin shows the pattern: rules decide most shell commands; unknown ones go to the model, which returns a probability that the command is risky; above a threshold, the user gets a confirmation prompt. &quot;The model never blocks a command by itself.&quot; In <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/\" target=\"_blank\" rel=\"noopener noreferrer\">the r/LocalLLaMA local-benchmark thread</a>, members report other uses:</p>\n<ul>\n<li>sorting incoming context into buckets with different lifetimes, instead of compacting it</li>\n<li>pre-filtering web search results before they reach the main model</li>\n<li>labelling datasets</li>\n</ul>\n<p>One member tried routing between cloud and local models and found the accuracy not good enough.</p>",
+              "text": "Use decision models as gates and routers, not as the judge of last resort. The Pi plugin shows the pattern: rules decide most shell commands; unknown ones go to the model, which returns a probability that the command is risky; above a threshold, the user gets a confirmation prompt. \"The model never blocks a command by itself.\" In the r/LocalLLaMA local-benchmark thread , members report other uses: sorting incoming context into buckets with different lifetimes, instead of compacting it pre-filtering web search results before they reach the main model labelling datasets One member tried routing between cloud and local models and found the accuracy not good enough. Reported · several independent users, no shared benchmark.",
+              "status": "reported",
+              "status_html": "<p>Reported · several independent users, no shared benchmark.</p>",
+              "updated": null
+            },
+            {
+              "headline": "<strong>Jev-compatible endpoints and EU residency.</strong>",
+              "html": "<p><strong>Jev-compatible endpoints and EU residency.</strong> The r/LLMDevs evaluator says TypeSafe runs only on the US West Coast, with no EU region. They name Uprelic's Strom as an EU-hosted (Paris) alternative that accepts the same <code>/v1/systemone</code> request format, so the TypeSafe SDK points at it with a one-line change. A provider in the thread says the 200ms target is &quot;mostly a prefill-and-cache problem, not a model-quality problem&quot;. They also warn that not every endpoint returns calibrated probabilities. Check that before committing, or you end up building the calibration yourself.</p>",
+              "text": "Jev-compatible endpoints and EU residency. The r/LLMDevs evaluator says TypeSafe runs only on the US West Coast, with no EU region. They name Uprelic's Strom as an EU-hosted (Paris) alternative that accepts the same /v1/systemone request format, so the TypeSafe SDK points at it with a one-line change. A provider in the thread says the 200ms target is \"mostly a prefill-and-cache problem, not a model-quality problem\". They also warn that not every endpoint returns calibrated probabilities. Check that before committing, or you end up building the calibration yourself. Single source for the residency and compatibility claims; not checked with either vendor.",
+              "status": "single-source",
+              "status_html": "<p>Single source for the residency and compatibility claims; not checked with either vendor.</p>",
+              "updated": null
+            }
+          ]
+        },
+        {
+          "heading": "Unverified, and worth watching",
+          "category": "unverified",
+          "lead_html": null,
+          "items": [
+            {
+              "headline": "<strong>How good are they, really?</strong>",
+              "html": "<p><strong>How good are they, really?</strong> <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/\" target=\"_blank\" rel=\"noopener noreferrer\">Jevman</a>, a benchmark where decision models play Pac-Man, was the top thread at 181 points. Its repo is <a href=\"https://github.com/opper-ai/jevman-benchmark\" target=\"_blank\" rel=\"noopener noreferrer\">opper-ai/jevman-benchmark</a>. The best reply undercuts it. The harness hands the model legal moves, ghost distances and intercept flags, so a simple A* search &quot;does dramatically better than Jev&quot;. The repo's own greedy baseline averages about 5,900, which by the commenter's account would beat every model on the leaderboard. Another member says a random dice roller beat Laya's average and high scores. On the local accuracy chart, the top reply asks for precision and recall instead of the post's ad hoc labels. One member says that even 83% accuracy is &quot;way, way too low&quot; to use without fine-tuning.</p>",
+              "text": "How good are they, really? Jevman , a benchmark where decision models play Pac-Man, was the top thread at 181 points. Its repo is opper-ai/jevman-benchmark . The best reply undercuts it. The harness hands the model legal moves, ghost distances and intercept flags, so a simple A* search \"does dramatically better than Jev\". The repo's own greedy baseline averages about 5,900, which by the commenter's account would beat every model on the leaderboard. Another member says a random dice roller beat Laya's average and high scores. On the local accuracy chart, the top reply asks for precision and recall instead of the post's ad hoc labels. One member says that even 83% accuracy is \"way, way too low\" to use without fine-tuning. Single source each · the takeaway from the threads is that these models are useful where structured inputs make the decision easy and speed matters, and that rules or search beat them when the inputs are already that structured.",
+              "status": "single-source",
+              "status_html": "<p>Single source each · the takeaway from the threads is that these models are useful where structured inputs make the decision easy and speed matters, and that rules or search beat them when the inputs are already that structured.</p>",
+              "updated": null
+            }
+          ]
+        },
+        {
+          "heading": "Sub triage",
+          "category": "meta",
+          "lead_html": null,
+          "items": [
+            {
+              "headline": "<strong>Why this was missed, and the fix.</strong>",
+              "html": "<p><strong>Why this was missed, and the fix.</strong> The category showed up across r/LocalLLaMA, r/LLMDevs and r/singularity at once, but no single post was a Claude story. <code>feeds/ai.md</code> now says to cover a new model category when it appears in two or more subs, even if no one post scores high. The feed now also reads r/OpenAI, which would have carried the DevDay announcement.</p>",
+              "text": "Why this was missed, and the fix. The category showed up across r/LocalLLaMA, r/LLMDevs and r/singularity at once, but no single post was a Claude story. feeds/ai.md now says to cover a new model category when it appears in two or more subs, even if no one post scores high. The feed now also reads r/OpenAI, which would have carried the DevDay announcement.",
+              "status": null,
+              "status_html": null,
+              "updated": null
+            }
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-10-07",
       "title": "Weekly AI digest",
       "intro_html": "<p>Three days after the last run, which is short of the skill's weekly cadence, but the hot pages had turned over almost completely: only a handful of posts carried over from 4 October. Anthropic's news on 6 October was programs rather than models (Mythos 5.1 for vetted security teams, free Claude Team for startups), and Mistral Large 4 was the release. The strongest thread of the run was about checking the checker: four unrelated posts each tested whether their own check could detect a failure, and mostly it couldn't.</p>",
@@ -1543,6 +1634,14 @@
           "status": "reported",
           "status_html": "<p>Reported · same threads · 2026-07-31</p>",
           "updated": "2026-07-31"
+        },
+        {
+          "headline": "<strong>For small routing and gating decisions, a decision model can replace an LLM call.</strong>",
+          "html": "<p><strong>For small routing and gating decisions, a decision model can replace an LLM call.</strong> Decision models (TypeSafe's Jev, OpenAI's Decisions API, and open-weight Kev and Laya) return a typed answer with a probability in roughly 100–500ms, for a fraction of a cent per thousand calls. They fit gates such as &quot;is this shell command risky?&quot;, routing, context triage and search-result filtering. Use the probability with a threshold that asks a human, rather than letting the model block or approve on its own. Before adopting one, check two things. Does the endpoint return calibrated probabilities? And would plain rules or search do better? When the inputs are already structured, they usually do.</p>",
+          "text": "For small routing and gating decisions, a decision model can replace an LLM call. Decision models (TypeSafe's Jev, OpenAI's Decisions API, and open-weight Kev and Laya) return a typed answer with a probability in roughly 100–500ms, for a fraction of a cent per thousand calls. They fit gates such as \"is this shell command risky?\", routing, context triage and search-result filtering. Use the probability with a threshold that asks a human, rather than letting the model block or approve on its own. Before adopting one, check two things. Does the endpoint return calibrated probabilities? And would plain rules or search do better? When the inputs are already structured, they usually do. Reported; pricing and APIs verified against TypeSafe's launch post and OpenAI's Decisions guide · Pi auto-mode plugin , local decision-model benchmark , Jevman · 2026-10-08",
+          "status": "reported",
+          "status_html": "<p>Reported; pricing and APIs <strong>verified</strong> against <a href=\"https://typesafe.ai/blog/introducing-system-one-models-and-jev\" target=\"_blank\" rel=\"noopener noreferrer\">TypeSafe's launch post</a> and <a href=\"https://developers.openai.com/api/docs/guides/decisions\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAI's Decisions guide</a> · <a href=\"https://www.reddit.com/r/LLMDevs/comments/1x0qg1x/\" target=\"_blank\" rel=\"noopener noreferrer\">Pi auto-mode plugin</a>, <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1x0wg85/\" target=\"_blank\" rel=\"noopener noreferrer\">local decision-model benchmark</a>, <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/\" target=\"_blank\" rel=\"noopener noreferrer\">Jevman</a> · 2026-10-08</p>",
+          "updated": "2026-10-08"
         }
       ]
     },
