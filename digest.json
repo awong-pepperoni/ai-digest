@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08",
+  "generated": "2026-10-09",
   "meta": {
     "feed": "ai",
     "title": "AI Digest",
@@ -8,6 +8,7 @@
     "durable_label": "Tips",
     "durable_heading": "Curated tips",
     "topics": {
+      "mustknow": "Must know",
       "releases": "Releases",
       "tips": "Techniques",
       "setups": "Setups",
@@ -26,6 +27,29 @@
       "title": "Off-cycle AI digest: what the last runs missed",
       "intro_html": "<p>An off-cycle entry, added on request, after an audit of what the 4 and 7 October runs missed. It started with <strong>decision models</strong>: small, fast models that return typed answers with probabilities instead of text. TypeSafe AI's Jev launched the category in mid-September, and OpenAI followed at DevDay with a Decisions API. The new completeness check then found that the digest had also never covered:</p>\n<ul>\n<li><strong>Claude Haiku 5.5</strong>, released 7 October, the same day as the last run</li>\n<li><strong>OpenAI's whole GPT-6 family</strong>, released 3 September onward</li>\n<li><strong>Google's Gemini 4 Argon</strong></li>\n<li><strong>two Anthropic announcements from 8 October</strong></li>\n</ul>\n<p>The causes:</p>\n<ul>\n<li>The feed read mostly Claude subs.</li>\n<li>18 September to 4 October went unsampled; the GPT-6 and Argon launches fell in that gap.</li>\n<li>Thinly spread stories were judged one post at a time.</li>\n<li>Nothing checked the vendors' own pages.</li>\n</ul>\n<p>This entry covers only the missed material; it is not a full run.</p>",
       "sections": [
+        {
+          "heading": "Must know",
+          "category": "mustknow",
+          "lead_html": null,
+          "items": [
+            {
+              "headline": "<strong>Claude Haiku 5.5 is a cheap model that held its own as a coding agent in one careful test.</strong>",
+              "html": "<p><strong>Claude Haiku 5.5 is a cheap model that held its own as a coding agent in one careful test.</strong> Released 7 October at $0.10 input and $0.50 output per million tokens, with an effort setting for the first time on a Haiku.</p>\n<ul>\n<li><strong>Why it matters:</strong> an order-of-magnitude price drop (Anthropic says 90% cheaper than Haiku 4.5 up to 100k tokens), and Reddit's best test suggests it is good enough for real agent work, not just chores.</li>\n<li><strong>What you could use it for:</strong> subagents and background jobs, compaction, classification, and everyday coding-agent sessions at medium effort. Keep Sonnet or Opus for high-stakes work.</li>\n<li><strong>Cost and speed:</strong> in <a href=\"https://www.reddit.com/r/ClaudeCode/comments/1x132yy/\" target=\"_blank\" rel=\"noopener noreferrer\">an r/ClaudeCode controlled test</a>, medium effort matched Sonnet 5.5 on a real-repo agentic task for about $0.08 against $1.68. Low effort skipped verification; high effort spent 385 requests for no gain.</li>\n<li><strong>Caveats:</strong> the price is five times higher once context passes 100k tokens. That explains <a href=\"https://www.reddit.com/r/ClaudeAI/comments/1x0agoh/\" target=\"_blank\" rel=\"noopener noreferrer\">the 1,092-point &quot;12x more than GPT-6 Luna&quot; thread</a>, whose benchmark the sub distrusts.</li>\n<li><strong>Read next:</strong> <a href=\"https://www.anthropic.com/claude-haiku-5-5\" target=\"_blank\" rel=\"noopener noreferrer\">Anthropic's announcement</a></li>\n</ul>",
+              "text": "Claude Haiku 5.5 is a cheap model that held its own as a coding agent in one careful test. Released 7 October at $0.10 input and $0.50 output per million tokens, with an effort setting for the first time on a Haiku. Why it matters: an order-of-magnitude price drop (Anthropic says 90% cheaper than Haiku 4.5 up to 100k tokens), and Reddit's best test suggests it is good enough for real agent work, not just chores. What you could use it for: subagents and background jobs, compaction, classification, and everyday coding-agent sessions at medium effort. Keep Sonnet or Opus for high-stakes work. Cost and speed: in an r/ClaudeCode controlled test , medium effort matched Sonnet 5.5 on a real-repo agentic task for about $0.08 against $1.68. Low effort skipped verification; high effort spent 385 requests for no gain. Caveats: the price is five times higher once context passes 100k tokens. That explains the 1,092-point \"12x more than GPT-6 Luna\" thread , whose benchmark the sub distrusts. Read next: Anthropic's announcement Verified for pricing and availability · the coding test is Single source",
+              "status": "verified",
+              "status_html": "<p><strong>Verified</strong> for pricing and availability · the coding test is Single source</p>",
+              "updated": null
+            },
+            {
+              "headline": "<strong>Decision models: small, fast models that return a typed answer and a probability instead of text.</strong>",
+              "html": "<p><strong>Decision models: small, fast models that return a typed answer and a probability instead of text.</strong> TypeSafe's Jev started the category on 15 September, and OpenAI's Decisions API followed on 29 September.</p>\n<ul>\n<li><strong>Why it matters:</strong> a new model category that makes per-request decisions in roughly 100–500ms for a fraction of a cent. That is cheap enough to put in front of every tool call or request.</li>\n<li><strong>What you could use it for:</strong> an approval gate for agent shell commands: <a href=\"https://www.reddit.com/r/LLMDevs/comments/1x0qg1x/\" target=\"_blank\" rel=\"noopener noreferrer\">a Pi plugin</a> sends unknown commands to a decision model and asks a person above a risk threshold; routing between models; sorting context into buckets; filtering search results before the main model reads them</li>\n<li><strong>Cost and speed:</strong> the plugin author measured hosted Jev at about 270ms and 1.5 cents per 1,000 checks. Open Kev-0.8B took about 170ms on a CPU in 1.1GB of RAM. Those are the author's own figures.</li>\n<li><strong>Caveats:</strong> <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1x0sm1b/\" target=\"_blank\" rel=\"noopener noreferrer\">Jevman</a> showed a simple search algorithm beating every decision model when the inputs were already structured. Let the probability trigger a human check rather than block on its own.</li>\n<li><strong>Read next:</strong> <a href=\"https://awong-pepperoni.github.io/ai-digest/#tips\" target=\"_blank\" rel=\"noopener noreferrer\">the decision-models tip</a></li>\n</ul>",
+              "text": "Decision models: small, fast models that return a typed answer and a probability instead of text. TypeSafe's Jev started the category on 15 September, and OpenAI's Decisions API followed on 29 September. Why it matters: a new model category that makes per-request decisions in roughly 100–500ms for a fraction of a cent. That is cheap enough to put in front of every tool call or request. What you could use it for: an approval gate for agent shell commands: a Pi plugin sends unknown commands to a decision model and asks a person above a risk threshold; routing between models; sorting context into buckets; filtering search results before the main model reads them Cost and speed: the plugin author measured hosted Jev at about 270ms and 1.5 cents per 1,000 checks. Open Kev-0.8B took about 170ms on a CPU in 1.1GB of RAM. Those are the author's own figures. Caveats: Jevman showed a simple search algorithm beating every decision model when the inputs were already structured. Let the probability trigger a human check rather than block on its own. Read next: the decision-models tip Reported, with the Jev and Decisions API launches verified against vendor pages",
+              "status": "reported",
+              "status_html": "<p>Reported, with the Jev and Decisions API launches <strong>verified</strong> against vendor pages</p>",
+              "updated": null
+            }
+          ]
+        },
         {
           "heading": "Releases and changes",
           "category": "releases",
