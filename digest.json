@@ -16,14 +16,15 @@
       "ideas": "Ideas",
       "unverified": "Unverified claims",
       "meta": "Sub triage",
+      "coverage": "Coverage",
       "other": "Other"
     }
   },
   "digests": [
     {
       "date": "2026-10-08",
-      "title": "Off-cycle AI digest: decision models",
-      "intro_html": "<p>An off-cycle entry, added on request, for a story the 4 and 7 October runs missed: a new category of <strong>decision models</strong>. These are small, fast models that return typed answers with probabilities instead of generating text. TypeSafe AI's Jev launched the category in mid-September, and OpenAI followed at DevDay with a Decisions API. The runs missed it for two reasons. The feed read mostly Claude subs, and the strongest threads, on r/LocalLLaMA, rose after the 7 October run. This entry covers only that story; it is not a full run.</p>",
+      "title": "Off-cycle AI digest: what the last runs missed",
+      "intro_html": "<p>An off-cycle entry, added on request, after an audit of what the 4 and 7 October runs missed. It started with <strong>decision models</strong>: small, fast models that return typed answers with probabilities instead of text. TypeSafe AI's Jev launched the category in mid-September, and OpenAI followed at DevDay with a Decisions API. The new completeness check then found that the digest had also never covered:</p>\n<ul>\n<li><strong>Claude Haiku 5.5</strong>, released 7 October, the same day as the last run</li>\n<li><strong>OpenAI's whole GPT-6 family</strong>, released 3 September onward</li>\n<li><strong>Google's Gemini 4 Argon</strong></li>\n<li><strong>two Anthropic announcements from 8 October</strong></li>\n</ul>\n<p>The causes:</p>\n<ul>\n<li>The feed read mostly Claude subs.</li>\n<li>18 September to 4 October went unsampled; the GPT-6 and Argon launches fell in that gap.</li>\n<li>Thinly spread stories were judged one post at a time.</li>\n<li>Nothing checked the vendors' own pages.</li>\n</ul>\n<p>This entry covers only the missed material; it is not a full run.</p>",
       "sections": [
         {
           "heading": "Releases and changes",
@@ -53,6 +54,46 @@
               "status": "single-source",
               "status_html": "<p>Single source · the plugin author's own 50-command test, which they call &quot;only a rough check&quot;.</p>",
               "updated": null
+            },
+            {
+              "headline": "<strong>Claude Haiku 5.5, released 7 October.</strong>",
+              "html": "<p><strong>Claude Haiku 5.5, released 7 October.</strong> Anthropic calls it &quot;the cheapest, fastest, and most capable small model we've ever released&quot;. Pricing per million tokens:</p>\n<ul>\n<li>up to 100k tokens of context: $0.10 input and $0.50 output</li>\n<li>above 100k: $0.50 input and $2.50 output</li>\n</ul>\n<p>It has a 1M-token context window and is the first Haiku with an adjustable effort setting. The same announcement halves Sonnet 5.5 cache-read prices to $0.10 per million tokens and adds monthly API credits ($100–500) for Max and Team subscribers.</p>\n<p>The biggest thread, <a href=\"https://www.reddit.com/r/ClaudeAI/comments/1x0agoh/\" target=\"_blank\" rel=\"noopener noreferrer\">&quot;Haiku 5.5 cost 12x more than GPT-6 Luna for the same voxel pagoda&quot;</a> (1,092 points), is mostly distrust of the benchmark. The top reply doubts the poster's past results. The useful point is the price step: long agent runs that pass 100k context pay five times the rate, which explains the blowout. <a href=\"https://www.reddit.com/r/ClaudeCode/comments/1x132yy/\" target=\"_blank\" rel=\"noopener noreferrer\">A controlled test in r/ClaudeCode</a> (64 points) found that every model scored 100% on well-specified tasks. Only an agentic task in a real repo separated them, and on it Haiku at medium effort matched Sonnet 5.5 for about $0.08 against $1.68. Low effort skipped verification and made up an excuse; high effort cost more for no gain.</p>",
+              "text": "Claude Haiku 5.5, released 7 October. Anthropic calls it \"the cheapest, fastest, and most capable small model we've ever released\". Pricing per million tokens: up to 100k tokens of context: $0.10 input and $0.50 output above 100k: $0.50 input and $2.50 output It has a 1M-token context window and is the first Haiku with an adjustable effort setting. The same announcement halves Sonnet 5.5 cache-read prices to $0.10 per million tokens and adds monthly API credits ($100–500) for Max and Team subscribers. The biggest thread, \"Haiku 5.5 cost 12x more than GPT-6 Luna for the same voxel pagoda\" (1,092 points), is mostly distrust of the benchmark. The top reply doubts the poster's past results. The useful point is the price step: long agent runs that pass 100k context pay five times the rate, which explains the blowout. A controlled test in r/ClaudeCode (64 points) found that every model scored 100% on well-specified tasks. Only an agentic task in a real repo separated them, and on it Haiku at medium effort matched Sonnet 5.5 for about $0.08 against $1.68. Low effort skipped verification and made up an excuse; high effort cost more for no gain. Verified for pricing, context and availability, against Anthropic's announcement . The benchmark figures are Anthropic's, and the coding test is Single source.",
+              "status": "verified",
+              "status_html": "<p><strong>Verified</strong> for pricing, context and availability, against <a href=\"https://www.anthropic.com/claude-haiku-5-5\" target=\"_blank\" rel=\"noopener noreferrer\">Anthropic's announcement</a>. The benchmark figures are Anthropic's, and the coding test is Single source.</p>",
+              "updated": null
+            },
+            {
+              "headline": "<strong>OpenAI's GPT-6 family, which the digest never covered.</strong>",
+              "html": "<p><strong>OpenAI's GPT-6 family, which the digest never covered.</strong> The API changelog lists:</p>\n<ul>\n<li><strong>GPT-6 Sol and GPT-6 Luna</strong>, 22 September, both reasoning models taking text and images</li>\n<li><strong>GPT-6.1 Sol</strong>, 29 September, &quot;for complex coding and professional work at lower cost than GPT-6 Astra&quot;</li>\n<li><strong>computer use in the Agents API</strong>, 29 September</li>\n<li><strong>API usage tiers simplified from five to three</strong>, 6 October</li>\n<li>an <strong>Ultrafast mode for GPT-6.1 Sol</strong>, 8 October</li>\n</ul>\n<p>GPT-6 Astra, the flagship, came first: per secondary coverage, a limited preview on 3 September and paid users from 4 September. Its <a href=\"https://www.reddit.com/r/OpenAI/comments/1w6hf6g/\" target=\"_blank\" rel=\"noopener noreferrer\">r/OpenAI thread</a> (1,444 points) is mostly jokes. The substantive comment quotes the staged rollout, &quot;to a limited set of organizations and over the coming days&quot; for paid tiers, and the API. <a href=\"https://www.reddit.com/r/OpenAI/comments/1wcsciq/\" target=\"_blank\" rel=\"noopener noreferrer\">ChatGPT for Financial Services</a> (620 points) drew job-loss worries and doubts about trusting OpenAI with financial data.</p>",
+              "text": "OpenAI's GPT-6 family, which the digest never covered. The API changelog lists: GPT-6 Sol and GPT-6 Luna , 22 September, both reasoning models taking text and images GPT-6.1 Sol , 29 September, \"for complex coding and professional work at lower cost than GPT-6 Astra\" computer use in the Agents API , 29 September API usage tiers simplified from five to three , 6 October an Ultrafast mode for GPT-6.1 Sol , 8 October GPT-6 Astra, the flagship, came first: per secondary coverage, a limited preview on 3 September and paid users from 4 September. Its r/OpenAI thread (1,444 points) is mostly jokes. The substantive comment quotes the staged rollout, \"to a limited set of organizations and over the coming days\" for paid tiers, and the API. ChatGPT for Financial Services (620 points) drew job-loss worries and doubts about trusting OpenAI with financial data. Verified for the Sol, Luna, 6.1 Sol, Agents API, tier and Ultrafast entries, against OpenAI's API changelog . Astra's dates are Reported, from secondary coverage. ChatGPT for Financial Services is Reported; openai.com refused automated requests.",
+              "status": "verified",
+              "status_html": "<p><strong>Verified</strong> for the Sol, Luna, 6.1 Sol, Agents API, tier and Ultrafast entries, against <a href=\"https://developers.openai.com/api/docs/changelog\" target=\"_blank\" rel=\"noopener noreferrer\">OpenAI's API changelog</a>. Astra's dates are Reported, from secondary coverage. ChatGPT for Financial Services is Reported; openai.com refused automated requests.</p>",
+              "updated": null
+            },
+            {
+              "headline": "<strong>Google's Gemini 4 Argon: announced, not generally available.</strong>",
+              "html": "<p><strong>Google's Gemini 4 Argon: announced, not generally available.</strong> It is rolling out first to cyber defenders in Google's Fairwind Program, then to &quot;paid API customers and Google AI Ultra subscribers&quot;, with no date given. Introductory API pricing is $2 input and $10 output per million tokens. The <a href=\"https://awong-pepperoni.github.io/goog-stock-digest/\" target=\"_blank\" rel=\"noopener noreferrer\">r/GOOG_Stock digest</a> covers the market's reaction.</p>",
+              "text": "Google's Gemini 4 Argon: announced, not generally available. It is rolling out first to cyber defenders in Google's Fairwind Program, then to \"paid API customers and Google AI Ultra subscribers\", with no date given. Introductory API pricing is $2 input and $10 output per million tokens. The r/GOOG_Stock digest covers the market's reaction. Verified against Google's announcement . The post is dated 30 September; Google's index page lists it as 26 September.",
+              "status": "verified",
+              "status_html": "<p><strong>Verified</strong> against <a href=\"https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/\" target=\"_blank\" rel=\"noopener noreferrer\">Google's announcement</a>. The post is dated 30 September; Google's index page lists it as 26 September.</p>",
+              "updated": null
+            },
+            {
+              "headline": "<strong>Anthropic, 8 October: a new Usage Policy and a &quot;Cyber Mission&quot;.</strong>",
+              "html": "<p><strong>Anthropic, 8 October: a new Usage Policy and a &quot;Cyber Mission&quot;.</strong> The policy is effective 12 November. It:</p>\n<ul>\n<li>consolidates rules against deceptive campaigns</li>\n<li>renames the elections section &quot;Do Not Undermine Democratic Processes&quot;</li>\n<li>explicitly covers weapons guidance software and tracking without consent</li>\n<li>adds safety requirements for Claude driving hardware that can take physical actions</li>\n</ul>\n<p>The Cyber Mission pairs Claude with eleven security firms on critical-infrastructure defense, and adds a free opt-in OSS Scanner. It periodically scans enrolled open-source projects and returns a bug report with a working exploit and a proposed patch.</p>",
+              "text": "Anthropic, 8 October: a new Usage Policy and a \"Cyber Mission\". The policy is effective 12 November. It: consolidates rules against deceptive campaigns renames the elections section \"Do Not Undermine Democratic Processes\" explicitly covers weapons guidance software and tracking without consent adds safety requirements for Claude driving hardware that can take physical actions The Cyber Mission pairs Claude with eleven security firms on critical-infrastructure defense, and adds a free opt-in OSS Scanner. It periodically scans enrolled open-source projects and returns a bug report with a working exploit and a proposed patch. Verified for the Usage Policy, against Anthropic's post . The Cyber Mission is Reported, consistent across press coverage.",
+              "status": "verified",
+              "status_html": "<p><strong>Verified</strong> for the Usage Policy, against <a href=\"https://www.anthropic.com/news/2026-usage-policy-update\" target=\"_blank\" rel=\"noopener noreferrer\">Anthropic's post</a>. The Cyber Mission is Reported, consistent across press coverage.</p>",
+              "updated": null
+            },
+            {
+              "headline": "<strong>Claude Code 2.1.295 adds <code>onFailure: &quot;block&quot;</code> for command and HTTP hooks.</strong>",
+              "html": "<p><strong>Claude Code 2.1.295 adds <code>onFailure: &quot;block&quot;</code> for command and HTTP hooks.</strong> A hook that can't start, times out, or exits with an unexpected code now blocks the action instead of letting it through. That matters to any setup that relies on a hook as a guard.</p>",
+              "text": "Claude Code 2.1.295 adds onFailure: \"block\" for command and HTTP hooks. A hook that can't start, times out, or exits with an unexpected code now blocks the action instead of letting it through. That matters to any setup that relies on a hook as a guard. Verified against the changelog ; the changelog gives no release date.",
+              "status": "verified",
+              "status_html": "<p><strong>Verified</strong> against <a href=\"https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md\" target=\"_blank\" rel=\"noopener noreferrer\">the changelog</a>; the changelog gives no release date.</p>",
+              "updated": null
             }
           ]
         },
@@ -75,6 +116,21 @@
               "text": "Jev-compatible endpoints and EU residency. The r/LLMDevs evaluator says TypeSafe runs only on the US West Coast, with no EU region. They name Uprelic's Strom as an EU-hosted (Paris) alternative that accepts the same /v1/systemone request format, so the TypeSafe SDK points at it with a one-line change. A provider in the thread says the 200ms target is \"mostly a prefill-and-cache problem, not a model-quality problem\". They also warn that not every endpoint returns calibrated probabilities. Check that before committing, or you end up building the calibration yourself. Single source for the residency and compatibility claims; not checked with either vendor.",
               "status": "single-source",
               "status_html": "<p>Single source for the residency and compatibility claims; not checked with either vendor.</p>",
+              "updated": null
+            }
+          ]
+        },
+        {
+          "heading": "Notable builds",
+          "category": "builds",
+          "lead_html": null,
+          "items": [
+            {
+              "headline": "<strong><a href=\"https://www.reddit.com/r/ClaudeAI/comments/1x0hhg6/\" target=\"_blank\" rel=\"noopener noreferrer\">Ponytail 5</a>, a &quot;lazy senior dev&quot; coding skill, rebuilt from scratch</strong>",
+              "html": "<p><strong><a href=\"https://www.reddit.com/r/ClaudeAI/comments/1x0hhg6/\" target=\"_blank\" rel=\"noopener noreferrer\">Ponytail 5</a>, a &quot;lazy senior dev&quot; coding skill, rebuilt from scratch</strong> (414 points on r/ClaudeAI, also posted to r/ClaudeCode). The author describes it as concrete rules, not a persona: check whether code needs to exist, reuse what's in the repo, use the standard library, never cut validation. They claim 53% less code and tests on 98% of risky logic, over 5,900 benchmarked runs. The thread's main complaint is the <code>// ponytail:</code> comments it leaves throughout a codebase. The second is that Anthropic's plugin directory still serves an old version; the author says to install from their own marketplace instead.</p>",
+              "text": "Ponytail 5 , a \"lazy senior dev\" coding skill, rebuilt from scratch (414 points on r/ClaudeAI, also posted to r/ClaudeCode). The author describes it as concrete rules, not a persona: check whether code needs to exist, reuse what's in the repo, use the standard library, never cut validation. They claim 53% less code and tests on 98% of risky logic, over 5,900 benchmarked runs. The thread's main complaint is the // ponytail: comments it leaves throughout a codebase. The second is that Anthropic's plugin directory still serves an old version; the author says to install from their own marketplace instead. Single source · benchmark figures are the author's.",
+              "status": "single-source",
+              "status_html": "<p>Single source · benchmark figures are the author's.</p>",
               "updated": null
             }
           ]
@@ -103,6 +159,53 @@
               "headline": "<strong>Why this was missed, and the fix.</strong>",
               "html": "<p><strong>Why this was missed, and the fix.</strong> The category showed up across r/LocalLLaMA, r/LLMDevs and r/singularity at once, but no single post was a Claude story. <code>feeds/ai.md</code> now says to cover a new model category when it appears in two or more subs, even if no one post scores high. The feed now also reads r/OpenAI, which would have carried the DevDay announcement.</p>",
               "text": "Why this was missed, and the fix. The category showed up across r/LocalLLaMA, r/LLMDevs and r/singularity at once, but no single post was a Claude story. feeds/ai.md now says to cover a new model category when it appears in two or more subs, even if no one post scores high. The feed now also reads r/OpenAI, which would have carried the DevDay announcement.",
+              "status": null,
+              "status_html": null,
+              "updated": null
+            }
+          ]
+        },
+        {
+          "heading": "Coverage check",
+          "category": "coverage",
+          "lead_html": null,
+          "items": [
+            {
+              "headline": "<strong>Read:</strong> ClaudeAI, ClaudeCode, claudeskills, LocalLLaMA, AI_Agents, LLMDevs, claudexplorers, OpenAI, MachineLearning, GoogleGeminiAI.",
+              "html": "<p><strong>Read:</strong> ClaudeAI, ClaudeCode, claudeskills, LocalLLaMA, AI_Agents, LLMDevs, claudexplorers, OpenAI, MachineLearning, GoogleGeminiAI. <strong>Sources checked:</strong> Anthropic news, the Claude Code changelog (the raw file; GitHub's page didn't render), the OpenAI API changelog, the Google Gemini blog and Mistral news. <strong>OpenAI news</strong> refused automated requests, so its items came from the API changelog and web search.</p>",
+              "text": "Read: ClaudeAI, ClaudeCode, claudeskills, LocalLLaMA, AI_Agents, LLMDevs, claudexplorers, OpenAI, MachineLearning, GoogleGeminiAI. Sources checked: Anthropic news, the Claude Code changelog (the raw file; GitHub's page didn't render), the OpenAI API changelog, the Google Gemini blog and Mistral news. OpenAI news refused automated requests, so its items came from the API changelog and web search.",
+              "status": null,
+              "status_html": null,
+              "updated": null
+            },
+            {
+              "headline": "<strong>Announced, not discussed:</strong>",
+              "html": "<p><strong>Announced, not discussed:</strong></p>\n<ul>\n<li>Anthropic's $100 million program to train 10,000 engineers (2 October)</li>\n<li>Barclays scaling Claude (1 October)</li>\n<li>Anthropic's &quot;Building on our commitment to American scientific discovery&quot; (8 October; the page returned 404)</li>\n<li>OpenAI's in-product HIPAA agreement flow (5 October)</li>\n<li>Mistral's &quot;Hallo, Deutschland!&quot; (28 September)</li>\n<li>Mistral and Mozilla's in-browser AI (16 September)</li>\n<li>Mistral Large 4 (6 October), already covered in the 7 October entry</li>\n</ul>",
+              "text": "Announced, not discussed: Anthropic's $100 million program to train 10,000 engineers (2 October) Barclays scaling Claude (1 October) Anthropic's \"Building on our commitment to American scientific discovery\" (8 October; the page returned 404) OpenAI's in-product HIPAA agreement flow (5 October) Mistral's \"Hallo, Deutschland!\" (28 September) Mistral and Mozilla's in-browser AI (16 September) Mistral Large 4 (6 October), already covered in the 7 October entry Verified against each vendor's own news or changelog listing.",
+              "status": "verified",
+              "status_html": "<p><strong>Verified</strong> against each vendor's own news or changelog listing.</p>",
+              "updated": null
+            },
+            {
+              "headline": "<strong>Flagged terms set aside:</strong>",
+              "html": "<p><strong>Flagged terms set aside:</strong></p>\n<ul>\n<li><em>gpt</em>, <em>chatgpt</em>, <em>gpt-6.1</em> and <em>ponytail</em>: covered above</li>\n<li><em>neurips</em>, <em>icml</em>, <em>phd</em> and <em>nlp</em>: conference and career threads. The 324-point thread on <a href=\"https://www.reddit.com/r/MachineLearning/comments/1x0i6b5/\" target=\"_blank\" rel=\"noopener noreferrer\">an erroneous Nvidia paper accepted as an ICML spotlight</a> is worth a full read next run.</li>\n<li><em>tts</em>, <em>rtx</em> and <em>vram</em>: local-hardware posts. The 217-point <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1x0wnz1/\" target=\"_blank\" rel=\"noopener noreferrer\">8× Radeon V620 rig</a> is for next run.</li>\n<li><em>n8n</em>: a workflow tool named in beginner questions</li>\n</ul>",
+              "text": "Flagged terms set aside: gpt , chatgpt , gpt-6.1 and ponytail : covered above neurips , icml , phd and nlp : conference and career threads. The 324-point thread on an erroneous Nvidia paper accepted as an ICML spotlight is worth a full read next run. tts , rtx and vram : local-hardware posts. The 217-point 8× Radeon V620 rig is for next run. n8n : a workflow tool named in beginner questions",
+              "status": null,
+              "status_html": null,
+              "updated": null
+            },
+            {
+              "headline": "<strong>Gap:</strong> 18 September to 4 October was never sampled by hot lists.",
+              "html": "<p><strong>Gap:</strong> 18 September to 4 October was never sampled by hot lists. The GPT-6 launches, DevDay and Gemini 4 Argon fell in it; official sources were checked for that window.</p>",
+              "text": "Gap: 18 September to 4 October was never sampled by hot lists. The GPT-6 launches, DevDay and Gemini 4 Argon fell in it; official sources were checked for that window.",
+              "status": null,
+              "status_html": null,
+              "updated": null
+            },
+            {
+              "headline": "<strong>A limit of the term scan:</strong> a name that appears anywhere in the log counts as known.",
+              "html": "<p><strong>A limit of the term scan:</strong> a name that appears anywhere in the log counts as known. &quot;GPT-6&quot; stopped being flagged once the decision-models section mentioned it in passing, even though no entry covered the launch itself. The official-source check is what caught it.</p>",
+              "text": "A limit of the term scan: a name that appears anywhere in the log counts as known. \"GPT-6\" stopped being flagged once the decision-models section mentioned it in passing, even though no entry covered the launch itself. The official-source check is what caught it.",
               "status": null,
               "status_html": null,
               "updated": null
@@ -1634,6 +1737,14 @@
           "status": "reported",
           "status_html": "<p>Reported · same threads · 2026-07-31</p>",
           "updated": "2026-07-31"
+        },
+        {
+          "headline": "<strong>Haiku 5.5 is now a candidate for everyday agent work, but watch the 100k-context price step.</strong>",
+          "html": "<p><strong>Haiku 5.5 is now a candidate for everyday agent work, but watch the 100k-context price step.</strong> One controlled test found Haiku 5.5 at medium effort matched Sonnet 5.5 on a real-repo agentic task, at about a twentieth of the cost. Low effort skipped verification, and high effort cost more for no gain. Its price jumps fivefold once context passes 100k tokens, so a long agent session can cost far more than the headline rate suggests.</p>",
+          "text": "Haiku 5.5 is now a candidate for everyday agent work, but watch the 100k-context price step. One controlled test found Haiku 5.5 at medium effort matched Sonnet 5.5 on a real-repo agentic task, at about a twentieth of the cost. Low effort skipped verification, and high effort cost more for no gain. Its price jumps fivefold once context passes 100k tokens, so a long agent session can cost far more than the headline rate suggests. Single source for the comparison; pricing verified against Anthropic's announcement · r/ClaudeCode test , r/ClaudeAI price thread · 2026-10-08",
+          "status": "single-source",
+          "status_html": "<p>Single source for the comparison; pricing <strong>verified</strong> against <a href=\"https://www.anthropic.com/claude-haiku-5-5\" target=\"_blank\" rel=\"noopener noreferrer\">Anthropic's announcement</a> · <a href=\"https://www.reddit.com/r/ClaudeCode/comments/1x132yy/\" target=\"_blank\" rel=\"noopener noreferrer\">r/ClaudeCode test</a>, <a href=\"https://www.reddit.com/r/ClaudeAI/comments/1x0agoh/\" target=\"_blank\" rel=\"noopener noreferrer\">r/ClaudeAI price thread</a> · 2026-10-08</p>",
+          "updated": "2026-10-08"
         },
         {
           "headline": "<strong>For small routing and gating decisions, a decision model can replace an LLM call.</strong>",
